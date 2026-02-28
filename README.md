@@ -1,6 +1,6 @@
-# 🏦 Banking System API
+# Banking System API 
 
-<div align="center">
+<div >
 
 ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)
 ![Spring](https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white)
@@ -11,38 +11,37 @@
 
 </div>
 
-## 📖 Sobre o Projeto
-Esta é uma API REST para operações bancárias básicas. Desenvolvida com **Spring Boot 3.5** para oferecer uma base escalável. A aplicação gerencia desde a criação de contas, com geração automática de agência, até transações financeiras protegidas por autenticação.
+## Sobre 
+Esta é uma API REST para operações bancárias básicas. Desenvolvida com **Spring Boot 3.5**. A aplicação gerencia desde a criação de contas, com geração automática de agência, até transações financeiras protegidas por autenticação.
 
 ---
 
-## 🚀 Funcionalidades
+## Funcionalidades
 
-* **Autenticação Segura**: Implementação de login via JWT (Stateless) para garantir que apenas usuários autorizados realizem operações.
+* **Autenticação **: Implementação de login via JWT (Stateless) para garantir que apenas usuários autorizados realizem operações.
 * **Gestão de Clientes**: Cadastro de novos usuários com persistência em banco de dados MySQL.
 * **Automação de Contas**: Ao cadastrar um cliente, o sistema gera automaticamente um número de conta único (UUID) e uma agência vinculada ao ID do usuário.
 * **Operações Financeiras**:
     * **Depósitos**: Atualização de saldo em tempo real.
     * **Saques**: Verificação de saldo disponível antes da execução da transação.
-* **Histórico e Extrato**: Registro detalhado de transações com data e hora para auditoria e controle do usuário.
+* **Histórico e Extrato**: Registro de transações com data e hora para controle do usuário.
 
 ---
 
-## 🏗️ Arquitetura e Fluxo
+## Arquitetura
 
-O projeto segue a arquitetura em camadas do Spring Boot, garantindo uma separação clara entre as regras de negócio e a persistência de dados.
-
+O projeto segue a arquitetura em camadas do Spring Boot.
 
 
 1.  **Controller**: Recebe as requisições HTTP e direciona para os serviços adequados.
 2.  **DTO (Data Transfer Object)**: Camada de transferência de dados que protege a estrutura das entidades do banco de dados.
 3.  **Service**: Camada onde reside a lógica de negócio, como a criação automática de contas.
-4.  **Security**: Filtros personalizados que interceptam requisições para validar o Token JWT.
+4.  **Security**: Filtros que interceptam requisições para validar o Token JWT.
 5.  **Repository**: Interface de comunicação com o MySQL via Spring Data JPA.
 
 ---
 
-## 🛠️ Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
 * **Linguagem**: Java 17
 * **Framework**: Spring Boot 3.5
@@ -53,15 +52,15 @@ O projeto segue a arquitetura em camadas do Spring Boot, garantindo uma separaç
 
 ---
 
-## 📌 Endpoints Principais
+## Endpoints Principais
 
-### 🔓 Públicos 
+### Públicos 
 | Verbo | Endpoint | Descrição |
 | :--- | :--- | :--- |
 | POST | `/auth/login` | Autentica o usuário e retorna o Token JWT. |
 | POST | `/api/customers` | Cadastra um novo cliente (Gera conta automática). |
 
-### 🔒 Protegidos 
+### Protegidos 
 | Verbo | Endpoint | Descrição |
 | :--- | :--- | :--- |
 | GET | `/api/customers/{email}` | Retorna os detalhes do cliente pelo e-mail. |
@@ -71,7 +70,7 @@ O projeto segue a arquitetura em camadas do Spring Boot, garantindo uma separaç
 
 ---
 
-## 🔧 Configuração e Instalação
+## Configuração e Instalação
 
 ### Pré-requisitos
 * JDK 17 ou superior.
@@ -91,7 +90,7 @@ O projeto segue a arquitetura em camadas do Spring Boot, garantindo uma separaç
 
 ---
 
-## 🧠 Aspecto Técnico Relevante
+## Aspecto técnico observado
 
 A configuração do Spring Security para uma API Stateless foi um ponto central do projeto. Foi necessário implementar um filtro personalizado (`JwtAuthenticationFilter`) responsável por validar o token JWT a cada requisição, garantindo que operações como saques e depósitos estivessem protegidas, enquanto rotas públicas como cadastro e autenticação, permanecessem acessíveis sem token.
 
